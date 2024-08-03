@@ -19,6 +19,8 @@ function system_info()
             // Windows OS
             exec('net stop freeradius', $output, $retcode);
             exec('net start freeradius', $output, $retcode);
+        }elseif(strpos(get_system_distro(),'Ubuntu')){
+             exec('sudo restart freeradius.service 2>&1', $output, $retcode);
         } else {
             // Linux OS
             exec('sudo systemctl restart freeradius.service 2>&1', $output, $retcode);
